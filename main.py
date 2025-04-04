@@ -4,6 +4,11 @@ from serpapi import GoogleSearch
 import openai
 import re
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from a .env file
+load_dotenv()
 
 # Set up page configuration
 st.set_page_config(page_title="Indian Smart Shopping Assistant", layout="wide")
@@ -11,10 +16,10 @@ st.set_page_config(page_title="Indian Smart Shopping Assistant", layout="wide")
 # Set up API keys
 # In a production app, use st.secrets to securely store API keys
 if "SERPAPI_KEY" not in st.session_state:
-    st.session_state["SERPAPI_KEY"] = ""  # Replace with your actual API key or use st.secrets
+    st.session_state["SERPAPI_KEY"] = os.getenv("SERPAPI_KEY")  # Load from environment variable
 
 if "OPENAI_API_KEY" not in st.session_state:
-    st.session_state["OPENAI_API_KEY"] = ""  # Replace with your actual API key or use st.secrets
+    st.session_state["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")  # Load from environment variable
 
 # Initialize OpenAI client
 openai.api_key = st.session_state["OPENAI_API_KEY"]
