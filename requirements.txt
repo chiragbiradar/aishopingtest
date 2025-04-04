@@ -58,3 +58,4 @@ tzdata==2025.2
 urllib3==2.3.0
 watchdog==6.0.0
 yarl==1.18.3
+python-dotenv
